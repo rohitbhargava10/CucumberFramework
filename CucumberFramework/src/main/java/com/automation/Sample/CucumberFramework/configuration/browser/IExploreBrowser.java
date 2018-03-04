@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import com.automation.Sample.CucumberFramework.utility.ResourceHelper;
 
 public class IExploreBrowser {
-	
+
 	public Capabilities getIExplorerCapabilities() {
 		DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
 		cap.setCapability(InternetExplorerDriver.ELEMENT_SCROLL_BEHAVIOR,
@@ -23,10 +23,19 @@ public class IExploreBrowser {
 		cap.setJavascriptEnabled(true);
 		return cap;
 	}
-	
-	public WebDriver getIExplorerDriver(Capabilities cap) {
-		System.setProperty("webdriver.ie.driver", ResourceHelper.getResourcePath("driver/IEDriverServer.exe"));
-		return new InternetExplorerDriver(cap);
-	}
 
+	public WebDriver getIExplorerDriver(Capabilities cap) {
+
+		if (System.getProperty("os.name").contains("Mac")){
+			System.setProperty("webdriver.ie.driver", ResourceHelper.getResourcePath("/src/main/resources/drivers/MicrosoftWebDriver"));
+			return new InternetExplorerDriver(cap);
+		}
+		else if(System.getProperty("os.name").contains("Window")){
+			System.setProperty("webdriver.ie.driver", ResourceHelper.getResourcePath("/src/main/resources/drivers/MicrosoftWebDriver.exe"));
+			return new InternetExplorerDriver(cap);
+		}
+		return null;
+	}
 }
+
+

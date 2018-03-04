@@ -3,11 +3,9 @@ package com.automation.Sample.CucumberFramework.configuration.browser;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import com.automation.Sample.CucumberFramework.utility.ResourceHelper;
 
 public class FirefoxBrowser {
@@ -26,11 +24,11 @@ public class FirefoxBrowser {
 		
 		if (System.getProperty("os.name").contains("Mac")){
 			System.setProperty("webdriver.gecko.driver", ResourceHelper.getResourcePath("/src/main/resources/drivers/geckodriver"));
-			return new ChromeDriver(cap);
+			return new FirefoxDriver(cap);
 		}
 		else if(System.getProperty("os.name").contains("Window")){
-			System.setProperty("webdriver.chrome.driver", ResourceHelper.getResourcePath("/src/main/resources/drivers/geckodriver.exe"));
-			return new ChromeDriver(cap);
+			System.setProperty("webdriver.gecko.driver", ResourceHelper.getResourcePath("/src/main/resources/drivers/geckodriver.exe"));
+			return new FirefoxDriver(cap);
 		}
 		return null;
 	}

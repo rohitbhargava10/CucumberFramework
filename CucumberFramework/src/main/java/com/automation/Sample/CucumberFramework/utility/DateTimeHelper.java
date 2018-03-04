@@ -4,11 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * 
- * @author bsingh5
- *
- */
 public class DateTimeHelper {
 
 	public static String getCurrentDateTime() {

@@ -15,6 +15,7 @@ public class PropertyFileReader implements ConfigReader{
 	public PropertyFileReader() {
 		prop = new Properties();
 		try {
+			//prop.load requires fileinputstream
 			prop.load(ResourceHelper.getResourcePathInputStream("/src/main/resources/configfile/config.properties"));
 		} catch (Exception e) {
 			e.printStackTrace();

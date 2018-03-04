@@ -13,6 +13,9 @@ import com.automation.Sample.CucumberFramework.helper.Logger.LoggerHelper;
 
 public class DropDownHelper {
 	
+	//Methods of select
+	//selectByVisibleText ,getFirstSelectedOption, selectByIndex, getOptions
+	
 	private WebDriver driver;
 	private Logger Log = LoggerHelper.getLogger(DropDownHelper.class);
 

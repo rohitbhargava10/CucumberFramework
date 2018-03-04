@@ -23,20 +23,21 @@ public class JavaScriptHelper {
 		Log.info(script);
 		return exe.executeScript(script);
 	}
-
+	
+	//Script and Argument
 	public Object executeScript(String script, Object... args) {
 		JavascriptExecutor exe = (JavascriptExecutor) driver;
 		Log.info(script);
 		return exe.executeScript(script, args);
 	}
 
-	public void scrollToElemet(WebElement element) {
+	public void scrollToElement(WebElement element) {
 		executeScript("window.scrollTo(arguments[0],arguments[1])", element.getLocation().x, element.getLocation().y);
 		Log.info(element);
 	}
 
-	public void scrollToElemetAndClick(WebElement element) {
-		scrollToElemet(element);
+	public void scrollToElementAndClick(WebElement element) {
+		scrollToElement(element);
 		element.click();
 		Log.info(element);
 	}

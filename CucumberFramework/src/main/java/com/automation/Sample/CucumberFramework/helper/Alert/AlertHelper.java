@@ -60,7 +60,6 @@ public class AlertHelper{
 	}
 
 	public void DismissAlertIfPresent() {
-
 		if (!isAlertPresent())
 			return;
 		DismissAlert();
@@ -68,10 +67,8 @@ public class AlertHelper{
 	}
 	
 	public void AcceptPrompt(String text) {
-		
 		if (!isAlertPresent())
 			return;
-		
 		Alert alert = getAlert();
 		alert.sendKeys(text);
 		alert.accept();

@@ -10,12 +10,10 @@ public class GenericHelper{
 	private static final Logger log = LoggerHelper.getLogger(GenericHelper.class);
 	
 	public String readValueFromElement(WebElement element) {
-
 		if (null == element){
-			log.info("weblement is null");
+			log.info("webElement is null");
 			return null;
 		}
-
 		boolean displayed = false;
 		try {
 			displayed = isDisplayed(element);
@@ -23,7 +21,6 @@ public class GenericHelper{
 			log.error(e);
 			return null;
 		}
-
 		if (!displayed)
 			return null;
 		String text = element.getText();
@@ -31,14 +28,13 @@ public class GenericHelper{
 		return text;
 	}
 	
-
 	public String readValueFromInput(WebElement element) {
 		if (null == element)
 			return null;
 		if (!isDisplayed(element))
 			return null;
 		String value = element.getAttribute("value");
-		log.info("weblement valus is.."+value);
+		log.info("weblelement valus is.."+value);
 		return value;
 	}
 	
@@ -71,20 +67,4 @@ public class GenericHelper{
 			return null;
 		return element.getText();
 	}
-	
-
-	public static synchronized String getElementText( WebElement element) {
-		if (null == element) {
-			log.info("weblement is null");
-			return null;
-		}
-		String elementText = null;
-		try {
-			elementText = element.getText();
-		} catch (Exception ex) {
-			log.info("Element not found " + ex);
-		}
-		return elementText;
-	}
-
 }

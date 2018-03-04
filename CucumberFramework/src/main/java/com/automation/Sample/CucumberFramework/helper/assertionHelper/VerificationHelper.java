@@ -7,34 +7,35 @@ import com.automation.Sample.CucumberFramework.helper.Logger.LoggerHelper;
 
 
 public class VerificationHelper{
+	
+	//isDisplayed method is used
 
 	private static final  Logger log = LoggerHelper.getLogger(VerificationHelper.class);
 
 	public static synchronized boolean verifyElementPresent( WebElement element) {
-		boolean isDispalyed = false;
+		boolean isDisplayed = false;
 		try {
-			 isDispalyed= element.isDisplayed();
-			 log.info(element.getText()+" is dispalyed");
+			 isDisplayed= element.isDisplayed();
+			 log.info(element.getText()+" is displayed");
 		}
 		catch(Exception ex) {
 			log.error("Element not found " + ex);
 		}
-		
-		return isDispalyed;
+		return isDisplayed;
 	}
 	
 	public static synchronized boolean verifyElementNotPresent( WebElement element) {
-		boolean isDispalyed = false;
+		boolean isDisplayed = false;
 		try {
 			 element.isDisplayed();
-			 log.info(element.getText()+" is dispalyed");
+			 log.info(element.getText()+" is displayed");
 		}
 		catch(Exception ex) {
-			log.error("Element not found " + ex);
-			isDispalyed = true;
+			log.error("Element Found " + ex);
+			isDisplayed = true;
 		}
 		
-		return isDispalyed;
+		return isDisplayed;
 	}
 	
 	public static synchronized boolean verifyTextEquals( WebElement element,String expectedText) {

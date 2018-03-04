@@ -34,7 +34,7 @@ import cucumber.api.java.Before;
 public class TestBase {
 
 	private final Logger log = LoggerHelper.getLogger(TestBase.class);
-	
+
 	public static WebDriver driver;
 
 	public void waitForElement(WebElement element, int timeOutInSeconds) {
@@ -113,8 +113,8 @@ public class TestBase {
 
 	public WebDriver getBrowserObject(BrowserType bType) throws Exception {
 		try {
-			log.info(bType);
 
+			log.info(bType);
 			switch (bType) {
 
 			case Chrome:
@@ -136,16 +136,17 @@ public class TestBase {
 			throw e;
 		}
 	}
-	
+
 	public void setUpDriver(BrowserType bType) throws Exception {
-		
 		driver = getBrowserObject(bType);
 		log.debug("InitializeWebDrive : " + driver.hashCode());
 		driver.manage().timeouts().pageLoadTimeout(ObjectRepo.reader.getPageLoadTimeOut(), TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(ObjectRepo.reader.getImplicitWait(), TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
-	
+
+	//@Before will run before each scenario means new browser instance will launch for each scenario
+	//@Before - hooks in cucumber
 	@Before()
 	public void before() throws Exception {
 		ObjectRepo.reader = new PropertyFileReader();
@@ -153,9 +154,11 @@ public class TestBase {
 		log.info(ObjectRepo.reader.getBrowser());
 	}
 
+	//@After will run after each scenario means browser instance will be closed for each scenario
+	//@After - hooks in cucumber
+
 	@After()
 	public void after(Scenario scenario) throws Exception {
-		//driver.quit();
-		log.info("");
+		driver.quit();
 	}
 }

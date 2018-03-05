@@ -2,8 +2,6 @@
 package com.automation.Sample.CucumberFramework.configreader;
 
 import java.util.Properties;
-import org.apache.log4j.Level;
-
 import com.automation.Sample.CucumberFramework.configuration.browser.BrowserType;
 import com.automation.Sample.CucumberFramework.utility.ResourceHelper;
 
@@ -21,6 +19,7 @@ public class PropertyFileReader implements ConfigReader{
 			e.printStackTrace();
 		}
 	}
+
 
 	public String getUserName() {
 		return prop.getProperty("Username");
@@ -58,5 +57,10 @@ public class PropertyFileReader implements ConfigReader{
 		return BrowserType.valueOf(prop.getProperty("Browser"));
 	}
 
-	
+	public String getExtentPath() {
+		String reportConfigPath = prop.getProperty("reportConfigPath");
+		if(reportConfigPath!= null) return reportConfigPath;
+		else throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");		
+	}
 }
+

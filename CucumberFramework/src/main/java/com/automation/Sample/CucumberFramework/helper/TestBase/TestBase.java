@@ -25,7 +25,9 @@ import com.automation.Sample.CucumberFramework.configuration.browser.IExploreBro
 import com.automation.Sample.CucumberFramework.helper.Logger.LoggerHelper;
 import com.automation.Sample.CucumberFramework.utility.DateTimeHelper;
 import com.automation.Sample.CucumberFramework.utility.ResourceHelper;
+import com.cucumber.listener.Reporter;
 import com.google.common.base.Function;
+import com.google.common.io.Files;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -152,13 +154,35 @@ public class TestBase {
 		ObjectRepo.reader = new PropertyFileReader();
 		setUpDriver(ObjectRepo.reader.getBrowser());
 		log.info(ObjectRepo.reader.getBrowser());
+		Reporter.assignAuthor("Rohit Bhargava");
 	}
 
 	//@After will run after each scenario means browser instance will be closed for each scenario
 	//@After - hooks in cucumber
 
-	@After()
+	@After(order=1)
 	public void after(Scenario scenario) throws Exception {
+		if (scenario.isFailed()) {
+			String screenshotName = scenario.getName().replaceAll(" ", "_");
+			try {
+				//This takes a screenshot from the driver at save it to the specified location
+				File sourcePath = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				
+				//Building up the destination path for the screenshot to save
+				//Also make sure to create a folder 'screenshots' with in the cucumber-report folder
+				File destinationPath = new File(System.getProperty("user.dir") + "\\target\\cucumber-reports\\screenshots\\" + screenshotName + ".png");
+				
+				//Copy taken screenshot from source location to destination location
+				Files.copy(sourcePath, destinationPath);   
+ 
+				//This attach the specified screenshot to the test
+				Reporter.addScreenCaptureFromPath(destinationPath.toString());
+			} catch (IOException e) {
+			} 
+		}
+	}
+	@After(order=0)
+	public void laststep() throws Exception {
 		driver.quit();
 	}
 }

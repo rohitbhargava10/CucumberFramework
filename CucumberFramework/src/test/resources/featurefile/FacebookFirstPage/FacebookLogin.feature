@@ -1,5 +1,6 @@
 #Author: Rohit Bhargava
 
+@Functional
 Feature: Login To Facebook
    
   Scenario: Login with valid credentials

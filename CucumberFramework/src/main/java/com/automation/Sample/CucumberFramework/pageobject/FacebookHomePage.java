@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.automation.Sample.CucumberFramework.configreader.ObjectRepo;
 import com.automation.Sample.CucumberFramework.helper.Logger.LoggerHelper;
@@ -31,6 +32,7 @@ public class FacebookHomePage {
 		log.info("Verifying element present"+Home);
 		if(VerificationHelper.verifyElementPresent(Home)) {
 		System.out.println("Able to see the Home icon in profile");
+		//Assert.assertTrue(false, "Failing to check few things");
 		}
 		else {
 			System.out.println("Not abe to see home icon");

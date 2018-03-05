@@ -51,8 +51,8 @@ public class LoginToFacebook {
 	}
 
 
-	@When("^User enters mobile as (\\d+)$")
-	public void user_enters_mobile(int arg1) {
+	@When("^User enters mobile as \"([^\"]*)\"$")
+	public void user_enters_mobile(String arg1) {
 		initial.enternumber(arg1);
 	}
 

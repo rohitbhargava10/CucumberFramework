@@ -72,10 +72,9 @@ public class facebookInitialization {
 		this.lname.sendKeys(lname);
 	}
 	
-	public void enternumber(int number){
-		String num= Integer.toString(number);
+	public void enternumber(String number){
 		log.info("entering number..."+number);
-		this.number.sendKeys(num);
+		this.number.sendKeys(number);
 	}
 	
 	public void clickOnCreateAcc(){

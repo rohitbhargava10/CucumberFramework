@@ -1,9 +1,10 @@
 package com.automation.Sample.CucumberFramework.stepdefinition;
 
-import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import com.automation.Sample.CucumberFramework.configreader.ObjectRepo;
 import com.automation.Sample.CucumberFramework.helper.TestBase.TestBase;
+import com.automation.Sample.CucumberFramework.pageobject.FacebookHomePage;
 import com.automation.Sample.CucumberFramework.pageobject.facebookInitialization;
 
 import cucumber.api.java.en.Given;
@@ -13,6 +14,7 @@ import cucumber.api.java.en.When;
 public class LoginToFacebook {
 
 	facebookInitialization initial;
+	FacebookHomePage homePage;
 	
 	@Given("^User navigates to Facebook\\.com$")
 	public void user_navigates_to_Facebook_com() throws Throwable {
@@ -21,23 +23,20 @@ public class LoginToFacebook {
 
 	@When("^User enters \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void user_enters_and(String arg1, String arg2) throws Throwable {
-		TestBase.driver.findElement(By.xpath(".//*[@id='email']")).sendKeys(arg1);
-		TestBase.driver.findElement(By.xpath(".//*[@id='pass']")).sendKeys(arg2);
+		//Here we are initializing the driver as this is the first step to be called after PageLoad
+		initial= new facebookInitialization(TestBase.driver);
+		initial.enterUserAndPass(arg1, arg2);
 	}
-
+	
+	//Directing to other Page
 	@When("^click on login button$")
 	public void click_on_login_button() throws Throwable {
-		TestBase.driver.findElement(By.xpath(".//*[@id='loginbutton']")).click();
+		homePage= initial.clickOnLoginButton();
 	}
 
 	@Then("^User is able to successfull login$")
 	public void user_is_able_to_successfull_login() {
-		System.out.println("It Worked");
-	}
-
-	@Then("^User is not able to successfull login$")
-	public void user_is_not_able_to_successfull_login() {
-		System.out.println("It didn't Worked");
+		homePage.verifyProfile();
 	}
 
 	@When("^User enters firstname as \"([^\"]*)\"$")
@@ -69,7 +68,7 @@ public class LoginToFacebook {
 			System.out.println("Actual Message is equal to Expected messsage");
 		}
 		else {
-			System.out.println("Validation Failed");
+			Assert.assertTrue(false, this.getClass().getSimpleName() + "is getting failed");
 		}
 	}
 }

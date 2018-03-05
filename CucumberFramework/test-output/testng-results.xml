@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="17006" started-at="2018-03-04T18:37:41Z" finished-at="2018-03-04T18:37:58Z">
+  <suite name="Suite" duration-ms="30431" started-at="2018-03-05T09:27:40Z" finished-at="2018-03-05T09:28:10Z">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.automation.Sample.CucumberFramework.runner.FacebookLoginRunner@e25b2fe]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.automation.Sample.CucumberFramework.runner.TestCaseRunner@e25b2fe]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Test1" duration-ms="17006" started-at="2018-03-04T18:37:41Z" finished-at="2018-03-04T18:37:58Z">
-      <class name="com.automation.Sample.CucumberFramework.runner.FacebookLoginRunner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.automation.Sample.CucumberFramework.runner.FacebookLoginRunner@e25b2fe]" name="setUpClass" is-config="true" duration-ms="197" started-at="2018-03-05T00:07:41Z" finished-at="2018-03-05T00:07:41Z">
+    <test name="Test1" duration-ms="30431" started-at="2018-03-05T09:27:40Z" finished-at="2018-03-05T09:28:10Z">
+      <class name="com.automation.Sample.CucumberFramework.runner.TestCaseRunner">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.automation.Sample.CucumberFramework.runner.TestCaseRunner@e25b2fe]" name="setUpClass" is-config="true" duration-ms="221" started-at="2018-03-05T14:57:40Z" finished-at="2018-03-05T14:57:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.automation.Sample.CucumberFramework.runner.FacebookLoginRunner@e25b2fe]" name="feature" duration-ms="16734" started-at="2018-03-05T00:07:42Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-03-05T00:07:58Z">
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.automation.Sample.CucumberFramework.runner.TestCaseRunner@e25b2fe]" name="feature" duration-ms="13423" started-at="2018-03-05T14:57:40Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-03-05T14:57:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Login To Facebook]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.automation.Sample.CucumberFramework.runner.TestCaseRunner@e25b2fe]" name="feature" duration-ms="16683" started-at="2018-03-05T14:57:53Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-03-05T14:58:10Z">
           <params>
             <param index="0">
               <value>
@@ -25,11 +36,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- feature -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.automation.Sample.CucumberFramework.runner.FacebookLoginRunner@e25b2fe]" name="tearDownClass" is-config="true" duration-ms="6" started-at="2018-03-05T00:07:58Z" finished-at="2018-03-05T00:07:58Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.automation.Sample.CucumberFramework.runner.TestCaseRunner@e25b2fe]" name="tearDownClass" is-config="true" duration-ms="26" started-at="2018-03-05T14:58:10Z" finished-at="2018-03-05T14:58:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- com.automation.Sample.CucumberFramework.runner.FacebookLoginRunner -->
+      </class> <!-- com.automation.Sample.CucumberFramework.runner.TestCaseRunner -->
     </test> <!-- Test1 -->
   </suite> <!-- Suite -->
 </testng-results>

@@ -6,24 +6,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.automation.Sample.CucumberFramework.configreader.ObjectRepo;
 import com.automation.Sample.CucumberFramework.helper.Logger.LoggerHelper;
-import com.automation.Sample.CucumberFramework.helper.Wait.WaitHelper;
 import com.automation.Sample.CucumberFramework.helper.assertionHelper.VerificationHelper;
-
-
 
 public class facebookInitialization {
 
 	WebDriver driver;
 	private final Logger log = LoggerHelper.getLogger(facebookInitialization.class);
-	WaitHelper waitHelper;
+
 
 	public facebookInitialization(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElement(driver, createAccount,ObjectRepo.reader.getExplicitWait());
 	}
 
 	@FindBy(xpath="//input[@name=\"firstname\"]")
@@ -43,6 +37,30 @@ public class facebookInitialization {
 
 	@FindBy(xpath="//div[starts-with(@id,'js') and contains(text(),'six')]")
 	WebElement validationMessage;
+	
+	@FindBy(xpath=".//*[@id='email']")
+	WebElement username;
+	
+	@FindBy(xpath=".//*[@id='pass']")
+	WebElement pass;
+	
+	@FindBy(xpath=".//*[@id='loginbutton']")
+	WebElement login;
+	
+
+	public void enterUserAndPass(String user, String Pass) {
+		log.info("Entering the username as" +user);
+		log.info("Entering the Password as" +Pass);
+		username.sendKeys(user);
+		pass.sendKeys(Pass);
+	}
+	
+	public FacebookHomePage clickOnLoginButton(){
+		log.info("clicking on Login button...");
+		login.click();
+		return new FacebookHomePage(driver);
+	}
+
 
 	public void enterfname(String fname){
 		log.info("entering firstname..."+fname);
@@ -71,6 +89,7 @@ public class facebookInitialization {
 		new VerificationHelper();
 		return VerificationHelper.verifyTextEquals(validationMessage, expectedText);
 	}
+	
 	
 	
 }

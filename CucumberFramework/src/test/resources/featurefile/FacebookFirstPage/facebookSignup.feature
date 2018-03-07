@@ -12,4 +12,4 @@ Feature: Signup on facebook
     Examples: 
       | fname  | lname    | number     |
       | Rohit  | Bhargava | 9718977739 |
-      | Agrima | Bhargava | 9999785739 |
+      | Jitesh | Bhargava | 9912345678 |
